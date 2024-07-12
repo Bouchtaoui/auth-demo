@@ -21,10 +21,10 @@ export const actions = {
 	default: async ({ request }) => {
 		const loginForm = await superValidate(request, zod(schema));
 
-		console.log('register', loginForm);
+		console.log('login', loginForm);
 
 		if (!loginForm.valid) return fail(400, { regForm: loginForm });
 
-		return message(loginForm, { text: 'Form "register" posted successfully!' });
+		return message(loginForm, { text: 'Form "login" posted successfully!' });
 	}
 };
