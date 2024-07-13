@@ -1,5 +1,7 @@
 import {z} from 'zod';
-import { superValidate } from 'sveltekit-superforms';
+import { message, superValidate } from 'sveltekit-superforms';
+import { zod } from 'sveltekit-superforms/adapters';
+import { fail } from '@sveltejs/kit';
 
 
 const schema = z.object({
@@ -9,15 +11,20 @@ const schema = z.object({
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
-    const form = await superValidate(schema);
+    const form = await superValidate(zod(schema));
 
     return { form };
 };
 
 
 export const actions = {
-	default: async ({ cookies, request }) => {
-		
-        // super
+	default: async ({ request }) => {
+		const registerForm = await superValidate(request, zod(schema));
+
+		console.log('login', registerForm);
+
+		if (!registerForm.valid) return fail(400, { regForm: registerForm });
+
+		return message(registerForm, { text: 'Form "register" posted successfully!' });
 	}
 };
