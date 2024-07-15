@@ -35,7 +35,9 @@
 	"type": "module",
 	"dependencies": {
 		"@lucia-auth/adapter-sqlite": "^3.0.2",
+		"@node-rs/argon2": "^1.8.3",
 		"@popperjs/core": "^2.11.8",
+		"better-sqlite3": "^11.1.2",
 		"flowbite": "^2.3.0",
 		"flowbite-svelte": "^0.46.4",
 		"parse": "^5.1.0",
