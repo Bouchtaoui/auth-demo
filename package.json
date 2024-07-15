@@ -21,6 +21,7 @@
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0",
 		"globals": "^15.0.0",
+		"lucia": "^3.2.0",
 		"postcss": "^8.4.38",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
@@ -33,6 +34,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@lucia-auth/adapter-sqlite": "^3.0.2",
 		"@popperjs/core": "^2.11.8",
 		"flowbite": "^2.3.0",
 		"flowbite-svelte": "^0.46.4",
