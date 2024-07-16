@@ -7,7 +7,8 @@ import type { DatabaseUser } from "./db";
 
 const adapter = new BetterSqlite3Adapter(db, {
 	user: "user",
-	session: "session"
+	session: "session",
+    account: "account"
 });
 
 export const lucia = new Lucia(adapter, {
