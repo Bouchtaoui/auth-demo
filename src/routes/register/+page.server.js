@@ -48,8 +48,8 @@ export const actions = {
       outputLen: 32,
       parallelism: 1
     });
-    const userId = generateId(15);
     
+    const userId = generateId(15);
     
     try {
       db.prepare("INSERT INTO user (id, email, password) VALUES(?, ?, ?)").run(

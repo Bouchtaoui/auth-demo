@@ -22,5 +22,5 @@ db.exec(`CREATE TABLE IF NOT EXISTS session (
 export interface DatabaseUser {
 	id: string;
 	email: string;
-	password_hash: string;
+	password: string;
 }
