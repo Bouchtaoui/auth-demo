@@ -12,7 +12,8 @@ import { db } from "$lib/server/db";
 
 const schema = z.object({
   email: z.string().email(),
-  password: z.string().min(3)
+  password: z.string().min(3),
+  confirmPassword: z.string().min(3)
 })
 
 /** @type {import('./$types').PageServerLoad} */
@@ -40,6 +41,12 @@ export const actions = {
     
     const email = registerForm.data.email;
     const password = registerForm.data.password;
+    const passwordConfirm = registerForm.data.confirmPassword;
+
+    if (password !== passwordConfirm) {
+      return fail(400, { regForm: registerForm, message: "Passwords do not match" });
+    }
+    
     
     const passwordHash = await hash(password, {
       // recommended minimum parameters
