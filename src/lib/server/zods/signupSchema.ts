@@ -4,12 +4,12 @@ export const signupSchemaRaw = z.object({
 	email: z.string().email(),
 	password: z
 		.string()
-		.min(8)
-		.regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/, {
-			message:
-				'Password must contain at least one uppercase letter, one lowercase letter, and one number.'
-		}),
-	confirmPassword: z.string().min(8)
+		.min(3),
+		// .regex(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/, {
+		// 	message:
+		// 		'Password must contain at least one uppercase letter, one lowercase letter, and one number.'
+		// }),
+	confirmPassword: z.string().min(3)
 });
 
 export const signupSchema = signupSchemaRaw.refine(

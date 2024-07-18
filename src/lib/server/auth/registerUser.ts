@@ -72,5 +72,5 @@ export const createUserHandler = async ({
 		return setError(form, 'email', 'Error creating user. Username possibly already exists.');
 	}
 
-	redirect(302, '/user');
+	redirect(302, '/');
 };
