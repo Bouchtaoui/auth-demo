@@ -1,4 +1,4 @@
-import { lucia } from '$lib/server/lucia';
+import { lucia } from '$lib/server/auth/lucia';
 
 /**
  * Handles authentication per request

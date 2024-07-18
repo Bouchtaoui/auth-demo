@@ -6,8 +6,8 @@
  */
 import { dev } from '$app/environment';
 import { Lucia } from 'lucia';
-import { drizzleDb } from './database/drizzle';
-import { userTable, sessionTable } from "./database/authSchema";
+import { drizzleDb } from '../database/drizzle';
+import { userTable, sessionTable } from "../database/authSchema";
 import { DrizzleSQLiteAdapter } from "@lucia-auth/adapter-drizzle";
 
 /**
