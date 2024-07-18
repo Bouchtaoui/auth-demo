@@ -1,4 +1,4 @@
-import { lucia } from "$lib/server/auth";
+import { lucia } from "$lib/server/lucia";
 
 
 /** @type {import('@sveltejs/kit').Handle} */

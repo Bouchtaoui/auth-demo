@@ -3,11 +3,12 @@ import { message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { fail, redirect } from '@sveltejs/kit';
 
-import { lucia } from "$lib/server/auth";
+import { lucia } from "$lib/server/lucia";
+import { userTable } from '$lib/server/lucia/schema';
 import { generateId } from "lucia";
 import { hash } from "@node-rs/argon2";
 import { SqliteError } from "better-sqlite3";
-import { db } from "$lib/server/db";
+import { db } from "$lib/server/lucia/db";
 
 
 const schema = z.object({
@@ -59,11 +60,16 @@ export const actions = {
     const userId = generateId(15);
     
     try {
-      db.prepare("INSERT INTO user (id, email, password) VALUES(?, ?, ?)").run(
-        userId,
-        email,
-        passwordHash
-      );
+      // db.prepare("INSERT INTO user (id, email, password) VALUES(?, ?, ?)").run(
+      //   userId,
+      //   email,
+      //   passwordHash
+      // );
+      await db.insert(userTable).values({
+				id: userId,
+				email: email,
+				password: passwordHash
+			});
       
       const session = await lucia.createSession(userId, {});
       const sessionCookie = lucia.createSessionCookie(session.id);

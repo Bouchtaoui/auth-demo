@@ -3,11 +3,11 @@ import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { fail, redirect } from '@sveltejs/kit';
 
-import { lucia } from "$lib/server/auth";
+import { lucia } from "$lib/server/lucia";
 import { generateId } from "lucia";
 import { hash, verify } from "@node-rs/argon2";
 import { SqliteError } from "better-sqlite3";
-import { db } from "$lib/server/db";
+import { db } from "$lib/server/lucia/db";
 
 
 const schema = z.object({
@@ -40,8 +40,10 @@ export const actions = {
         const password = registerForm.data.password;
 
         try {
-            /** @type {import('$lib/server/db').DatabaseUser|undefined} */
-            const existingUser = /** @type {import('$lib/server/db').DatabaseUser|undefined} */ (db.prepare("SELECT * FROM user WHERE email = ?").get(email));
+            // /** @type {import('$lib/server/db').DatabaseUser|undefined} */
+            // const existingUser = /** @type {import('$lib/server/db').DatabaseUser|undefined} */ (db.prepare("SELECT * FROM user WHERE email = ?").get(email));
+            /** @type {import('$lib/server/lucia/db').DatabaseUser|undefined} */
+            const existingUser = /** @type {import('$lib/server/lucia/db').DatabaseUser|undefined} */ (db.prepare("SELECT * FROM user WHERE email = ?").get(email));
 
             console.log('existingUser', existingUser);
 
