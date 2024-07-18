@@ -5,7 +5,7 @@
 	/** @type {import('./$types').PageData} */
 	export let data;
 
-	const { form, errors } = superForm(data.form);
+	const { form, errors, enhance } = superForm(data.form);
 </script>
 
 <SuperDebug data={form} />
@@ -29,7 +29,7 @@
 				>
 					Create an account
 				</h1>
-				<form class="space-y-4 md:space-y-6" method="post">
+				<form class="space-y-4 md:space-y-6" method="post" use:enhance>
 					<div>
 						<label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
 							>Your email</label
