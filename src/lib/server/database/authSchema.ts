@@ -1,4 +1,10 @@
-import { sqliteTable, text, blob, integer } from 'drizzle-orm/sqlite-core';
+/**
+ * In this file we define the tables acoording to the
+ * Drizzle api.
+ * For authentication, we need a User and a Session table.
+ */
+
+import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
 
 export const userTable = sqliteTable('user', {
 	id: text('id').notNull().primaryKey(),
